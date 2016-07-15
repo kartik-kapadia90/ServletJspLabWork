@@ -16,16 +16,18 @@ public class Main {
 				/*assert longStrings.get(0).equals("Susannah");
 				assert longStrings.get(0).equals("Orinoco");*/
 				
-				StringCriterion sc1 = new Test1();
-				StringCriterion sc2 = new Test2();
-				StringCriterion sc3 = new Test3();
+				Criterion<String> sc1 = new Test1();
+				Criterion<Integer> sc2 = new Test2();
+				
+				List<Integer> integerList = Arrays.asList(1,3,4,9,10,12);
+				//Criterion sc3 = new Test3();
 				
 				List<String> longStrings1 = stringFilter(ls, sc1);
 				System.out.println(longStrings1);
-				List<String> longStrings2 = stringFilter(ls, sc2);
+				List<Integer> longStrings2 = stringFilter(integerList, sc2);
 				System.out.println(longStrings2);
-				List<String> longStrings3 = stringFilter(ls, sc3);
-				System.out.println(longStrings3);
+				/*List<String> longStrings3 = stringFilter(ls, sc3);
+				System.out.println(longStrings3);*/
 				
 				
 				
@@ -42,12 +44,12 @@ public class Main {
 		
 	}
 	
-	public static List<String> stringFilter(List<String> ls, StringCriterion criterion){
-		List<String> list = new ArrayList<String>();
+	public static <E> List<E> stringFilter(List<E> ls, Criterion<E> criterion){
+		List<E> list = new ArrayList<E>();
 		for(int i=0;i<ls.size();i++){
-			String str = ls.get(i);
-			if(criterion.test(str))
-				list.add(str);
+			//String str = (String) ls.get(i);
+			if(criterion.test(ls.get(i)))
+				list.add(ls.get(i));
 		}
 		return list;
 	}
