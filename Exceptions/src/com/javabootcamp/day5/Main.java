@@ -39,7 +39,7 @@ public class Main {
 		}
 		catch(Exception e){
 			try {
-				throw new BadMonth("Invalid Month");
+				throw new BadMonth("Invalid Month",e);
 			} catch (BadMonth e1) {				
 				e1.printStackTrace();	
 				
